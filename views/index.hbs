@@ -1,0 +1,63 @@
+<div class="container">
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-4">
+      <h4 class="totalAmount" style="display: inline;">總金額:</h4>
+      <h1 style="display: inline; color: red;">$
+        <span>{{totalAmount}}</span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-between align-items-center mt-3 mx-auto" style="width: 700px">
+    <div class=" col-md-2">
+      <a class="btn btn-outline-info" href="/expense/new">Create</a>
+    </div>
+
+    <div class="col-md-3">
+      <form>
+        <div class="form-group">
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option value="">全部</option>
+            {{#each item}}
+            <option value="{{ this.category }}">{{ this.category }}</option>
+            {{/each}}
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <ul class="list-group mt-3">
+    {{#each record}}
+    <li class="list-group-item mx-auto" style="width: 700px">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-1">
+          <i class="{{this.icon}} fa-3x"></i>
+        </div>
+        <div class="col-md-3">
+          <h5>{{this.name}}</h5>
+          <h6>{{this.date}}</h5>
+        </div>
+        <div class="col-md-1">
+          <h3>${{this.amount}}</h3>
+        </div>
+        <div class="col-md-3">
+          <a class="btn btn-primary" href="/expense/{{ this._id }}/edit">編輯</a>
+          <form action="/expense/{{ this._id }}/delete" method="POST" style="display: inline;"
+            onsubmit="return deleteFunction()">
+            <button class="btn btn-danger" type="submit">刪除</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+<script>
+  function deleteFunction() {
+    return confirm("確定要刪除此項目嗎?");
+  }
+</script>
