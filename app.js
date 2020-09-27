@@ -126,6 +126,32 @@ app.post('/expense/:id/delete', (req, res) => {
     .catch(error => console.log(error))
 })
 
+
+app.get('/category', (req, res) => {
+  const selectCategory = req.query.keyword
+  // console.log(selectCategory)
+  // console.log('-----')
+  Record.find()
+    .lean()
+    .then(record => {
+      const select = record.filter(item => {
+        return item.category === selectCategory
+      })
+      // console.log(select)
+      let totalAmount = 0
+      select.forEach(element => {
+        totalAmount = totalAmount + (element.amount)
+      })
+
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+        .then(item =>
+          res.render('index', { record: select, totalAmount: totalAmount.toLocaleString('zh-TW', { currency: 'TWD' }), item, selectCategory })
+        )
+    })
+})
+
 app.listen(3000, () => {
   console.log('app is running on http://localhost:3000')
 })

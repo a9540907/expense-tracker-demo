@@ -8,14 +8,14 @@
   <h5 class="my-4" style="color:red;">* 為必填欄位</h5>
   <form action="/expense/{{record._id}}/edit" method="POST">
     <div class="form-group row">
-      <label class="col-3" for="InputName">名稱<span style="color:red;">*</span></label>
-      <input class="form-control col-9" type="text" class="form-control" id="InputName" aria-describedby="name"
+      <label class="col-md-3" for="InputName">名稱<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" type="text" class="form-control" id="InputName" aria-describedby="name"
         placeholder="" name="name" value="{{record.name}}" required>
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="FormControlSelect1">類別<span style="color:red;">*</span></label>
-      <select class="form-control col-9" id="exampleFormControlSelect1" name="category">
+      <label class="col-md-3" for="FormControlSelect1">類別<span style="color:red;">*</span></label>
+      <select class="form-control col-md-9" id="exampleFormControlSelect1" name="category">
         <option value="{{record.category}}">{{record.category}}</option>
         {{#each item}}
         <option value="{{this.category}}">{{this.category}}</option>
@@ -25,13 +25,13 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="InputDate">日期<span style="color:red;">*</span></label>
-      <input class="form-control col-9" id="date" type="date" name="date" value="{{record.date}}" required>
+      <label class="col-md-3" for="InputDate">日期<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" id="date" type="date" name="date" value="{{record.date}}" required>
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="InputMoney">金額<span style="color:red;">*</span></label>
-      <input class="form-control col-9" type="text" class="form-control" id="InputName" aria-describedby="name"
+      <label class="col-md-3" for="InputMoney">金額<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" type="text" class="form-control" id="InputName" aria-describedby="name"
         placeholder="" name="amount" value="{{record.amount}}" required>
     </div>
 
