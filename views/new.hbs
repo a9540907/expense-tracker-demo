@@ -3,20 +3,19 @@
     <h2 style="font-weight:bold;">請輸入你的支出</h2>
   </div>
 </div>
-<div class="container px-5"
-  style="border: 1px solid #E0E3DA; border-radius: 10px; background-color: #f4f4f4; width: 900px">
+<div class="container px-5" style="border: 1px solid #E0E3DA; border-radius: 10px; background-color: #f4f4f4; ">
   <h5 class="my-4" style="color:red;">* 為必填欄位</h5>
 
   <form action="/expense" method="POST">
     <div class="form-group row">
-      <label class="col-3" for="InputName">名稱<span style="color:red;">*</span></label>
-      <input class="form-control col-9" type="text" class="form-control" id="InputName" aria-describedby="name"
+      <label class="col-md-3" for="InputName">名稱<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" type="text" class="form-control" id="InputName" aria-describedby="name"
         placeholder="" name="name" required>
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="FormControlSelect1">類別<span style="color:red;">*</span></label>
-      <select class="form-control col-9" name="category" id="exampleFormControlSelect1">
+      <label class="col-md-3" for="FormControlSelect1">類別<span style="color:red;">*</span></label>
+      <select class="form-control col-md-9" name="category" id="exampleFormControlSelect1">
         {{#each item}}
         <option value="{{ this.category }}">{{ this.category }}</option>
         {{/each}}
@@ -24,13 +23,13 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="InputDate">日期<span style="color:red;">*</span></label>
-      <input class="form-control col-9" id="date" type="date" name="date" required>
+      <label class="col-md-3" for="InputDate">日期<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" id="date" type="date" name="date" required>
     </div>
 
     <div class="form-group row">
-      <label class="col-3" for="InputAmount">金額<span style="color:red;">*</span></label>
-      <input class="form-control col-9" type="number" class="form-control" id="InputName" aria-describedby="name"
+      <label class="col-md-3" for="InputAmount">金額<span style="color:red;">*</span></label>
+      <input class="form-control col-md-9" type="number" class="form-control" id="InputName" aria-describedby="name"
         placeholder="" min="1" name="amount" required>
     </div>
 
