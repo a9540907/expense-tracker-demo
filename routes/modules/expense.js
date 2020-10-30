@@ -26,7 +26,11 @@ router.post('/', (req, res) => {
       })
       return Record.create({ name, category, date, amount, icon: selectIcon[0].icon })
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error)
+          res.sendStatus(404)
+        }
+        )
     })
 })
 
@@ -45,7 +49,10 @@ router.get('/:id/edit', (req, res) => {
           res.render('edit', { record, item })
         })
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      res.sendStatus(404)
+    })
 })
 
 router.post('/:id/edit', (req, res) => {
@@ -70,7 +77,10 @@ router.post('/:id/edit', (req, res) => {
         })
     })
     .then(() => res.redirect(`/`))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      res.sendStatus(404)
+    })
 })
 
 
@@ -79,7 +89,10 @@ router.post('/:id/delete', (req, res) => {
   return Record.findById(id)
     .then(record => record.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      res.sendStatus(404)
+    })
 })
 
 

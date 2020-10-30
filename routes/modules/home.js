@@ -50,6 +50,10 @@ router.get('/category', (req, res) => {
           res.render('index', { record: select, totalAmount: totalAmount.toLocaleString('zh-TW', { currency: 'TWD' }), item, selectCategory })
         )
     })
+    .catch(error => {
+      console.log(error)
+      res.sendStatus(404)
+    })
 })
 
 module.exports = router
