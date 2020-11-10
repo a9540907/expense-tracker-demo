@@ -16,8 +16,8 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const { name, date, amount, category } = req.body
-  console.log(category)
-  console.log(req.body.category)
+  // console.log(category)
+  // console.log(req.body.category)
   Category.find()
     .lean()
     .then(item => {
