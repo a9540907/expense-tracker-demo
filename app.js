@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const routes = require('./routes')
@@ -13,12 +14,13 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: 'ExpenseTracker',
   resave: false,
   saveUninitialized: true
 }))
 
 app.use(bodyParser.urlencoded({ extended: true }))
+usePassport(app)
 app.use(routes)
 
 app.listen(PORT, () => {
