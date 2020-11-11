@@ -5,7 +5,7 @@
 </div>
 <div class="container px-5" style="border: 1px solid #E0E3DA; border-radius: 10px; background-color: #f4f4f4;">
   <h5 class="my-4" style="color:red;">* 為必填欄位</h5>
-  <form action="/expense/{{record._id}}/edit" method="POST">
+  <form action="/expense/{{record._id}}?_method=PUT" method="POST">
     <div class="form-group row">
       <label class="col-md-3" for="InputName">名稱<span style="color:red;">*</span></label>
       <input class="form-control col-md-9" type="text" class="form-control" id="InputName" aria-describedby="name"
