@@ -10,8 +10,9 @@ const recordSchema = new Schema({
     required: true
   },
   date: {
-    type: String,
-    required: true
+    type: Date,
+    required: true,
+    default: Date.now
   },
   amount: {
     type: Number,
@@ -20,6 +21,12 @@ const recordSchema = new Schema({
   icon: {
     type: String,
     required: false
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    required: true
   }
 })
 
