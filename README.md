@@ -16,18 +16,18 @@
 密碼: '12345678
 
 ### Environment SetUp
-bcryptjs
-body-parser
-connect-flash
-dotenv
-express
-express-handlebars
-express-session
-method-override
-mongoose
-passport
-passport-facebook
-passport-local
+- bcryptjs  
+- body-parser  
+- connect-flash  
+- dotenv  
+- express  
+- express-handlebars
+- express-session
+- method-override
+- mongoose
+- passport
+- passport-facebook
+- passport-local
 
 ### Installation and Execution
 1. 開啟 terminal，並Clone 此專案至本機電腦
