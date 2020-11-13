@@ -1,29 +1,29 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const mongoose = require('mongoose')
 const Category = require('../category')
 const db = require('../../config/mongoose')
+const categoryList = require('../../categoryList.json').results
+
+
+// db.once('open', () => {
+//   Category.create(categoryList)
+//   console.log('mongodb connected!')
+// })
 
 db.once('open', () => {
-  console.log('mongodb connected!')
-  Category.create(
-    {
-      category: '家居物業',
-      icon: 'fas fa-home'
-    },
-    {
-      category: '餐飲食品',
-      icon: 'fas fa-utensils'
-    },
-    {
-      category: '休閒娛樂',
-      icon: 'fas fa-grin-beam'
-    },
-    {
-      category: '交通出行',
-      icon: 'fas fa-shuttle-van'
-    },
-    {
-      category: '其他 ',
-      icon: 'fas fa-pen'
+  return Promise.all(Array.from(
+    { length: categoryList.length },
+    (_, i) => {
+      return Category.create({
+        category: categoryList[i].category,
+        icon: categoryList[i].icon
+      })
     }
-  )
+  ))
+    .then(() => {
+      console.log('done.')
+      process.exit()
+    })
 })
