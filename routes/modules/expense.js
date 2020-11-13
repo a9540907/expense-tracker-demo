@@ -16,7 +16,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const { name, date, amount, category } = req.body
+  const { name, date, amount, category, merchant } = req.body
   // console.log(category)
   // console.log(req.body.category)
   Category.find()
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
       const selectIcon = item.filter(select => {
         return select.category === category
       })
-      return Record.create({ name, category, date, amount, icon: selectIcon[0].icon, userId })
+      return Record.create({ name, category, date, amount, merchant, icon: selectIcon[0].icon, userId })
         .then(() => res.redirect('/'))
         .catch(error => {
           console.log(error)
@@ -48,6 +48,8 @@ router.get('/:id/edit', (req, res) => {
         .then(item => {
           //將date object 轉成string
           record.date = record.date.toLocaleDateString()
+          // console.log('record.date:', record.date)
+          // console.log('record:', record)
 
           let select = item.findIndex(select => select.category === record.category)
           item.splice(select, 1)
@@ -63,7 +65,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const { name, date, amount, category } = req.body
+  const { name, date, amount, category, merchant } = req.body
 
   return Record.findOne({ _id, userId })
     .then(record => {
@@ -79,6 +81,7 @@ router.put('/:id', (req, res) => {
           record.name = name
           record.date = date
           record.amount = amount
+          record.merchant = merchant
           return record.save()
         })
     })
