@@ -46,10 +46,10 @@ router.get('/:id/edit', (req, res) => {
         .lean()
         .sort({ _id: 'asc' })
         .then(item => {
-          //將date object 轉成string
-          record.date = record.date.toLocaleDateString()
           // console.log('record.date:', record.date)
-          // console.log('record:', record)
+
+          record.date = record.date.toLocaleString('zh', { year: 'numeric', month: '2-digit', day: '2-digit' })
+          // console.log('toLocaleString:', record.date)
 
           let select = item.findIndex(select => select.category === record.category)
           item.splice(select, 1)
